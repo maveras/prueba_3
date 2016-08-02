@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :songs
+  resources :songs 
+  resources :users, only: [] do
+    resources :user_songs, only: [:index] do
+      
+    end
+  end
+
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
