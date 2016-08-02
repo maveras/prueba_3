@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /songs
   # GET /songs.json
@@ -15,10 +16,12 @@ class SongsController < ApplicationController
   # GET /songs/new
   def new
     @song = Song.new
+    @genres = Genre.all
   end
 
   # GET /songs/1/edit
   def edit
+    @genres = Genre.all
   end
 
   # POST /songs
